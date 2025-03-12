@@ -1,0 +1,66 @@
+@use '../abstracts/theme-colors' as tc;
+@use '../abstracts/measurements' as ms;
+
+form[class*="form-"], form[class*="form_"] {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr minmax(min-content, max-content);
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
+  margin-bottom: 10px;
+  margin-left: 10px;
+
+  // some other container types like "follow the channel"
+  [class*="wrapper_"] {
+    border-radius: ms.$big-radius;
+    max-width: calc(100% - 10px);
+    margin-right: 0;
+    margin-top: 10px;
+    margin-bottom: auto;
+  }
+
+  [class*="applicationCommandEducation-"] {
+    display: none;
+  }
+}
+
+// spacing channel input
+[class*="channelTextArea_"] {
+  background-color: transparent;
+  border-radius: ms.$big-radius;
+  max-width: calc(100% - 10px);
+  margin-top: 10px;
+  margin-bottom: auto;
+  [class*="attachedBars-"] {
+    background-color: tc.$background-secondary-alt;
+    border-bottom: tc.$dark-border;
+  }
+  [class*="scrollableContainer"] {
+    padding: 4px 0 4px 0;
+    border-radius: ms.$big-radius;
+    &[class*="hasConnectedBar"] {
+      border-radius: 0px 0px ms.$big-radius ms.$big-radius;
+    }
+  }
+}
+
+// remove tips below channel input message
+[class*="form_"]::before { 
+  display: none;
+}
+
+// typing section
+[class*="typing_"] {
+  max-width: calc(100% - 25px);
+  position: relative;
+  margin: 6px 0 -4px 4px;
+  height: 1rem;
+  left: 0;
+
+  color: tc.$text-muted;
+
+  [class*="typingDots_"] {
+    color: tc.$text-muted;
+  }
+}

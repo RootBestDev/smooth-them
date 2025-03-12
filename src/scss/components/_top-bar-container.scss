@@ -1,0 +1,130 @@
+@use '../abstracts/theme-colors' as tc;
+@use '../abstracts/general-colors' as gc;
+@use '../abstracts/measurements' as ms;
+
+[class*="title_"], [class*="container_"] {
+  width: auto;
+
+  [class*="searchBar_"] {
+    background-color: unset;
+  }
+
+  a[class*="anchor_"] div svg, a[class*="anchor_"]:hover div svg {
+    color: gc.$color5;
+  }
+
+  [class*="children_"]::after {
+    background: -webkit-gradient(linear,left top,right top,from(rgba(54,57,63,0)),to(tc.$background-secondary));
+    background: linear-gradient(90deg, rgba(54,57,63,0) 0, tc.$background-secondary);
+  }
+}
+
+// for channels bar
+// [class*="title_"][class*="container_"] {
+//   background: transparent;
+// }
+
+// spacing topbar
+[class*="container_"][class*="themed_"], [class*="topControls"] [class*="headerWrapper"] {
+  // standard
+  border-radius: ms.$big-radius;
+  margin: 10px 10px 0 10px;
+  background: tc.$background-secondary;
+  overflow: hidden;
+
+  // tab items
+  [class*="children_"] [class*="tabBar_"]  [role="tab"] {
+    border-radius: ms.$small-radius;
+    &[aria-selected="true"] {
+      color: tc.$text-alt;
+
+      &:focus-within {
+        color: tc.$text-alt;
+      }
+
+      &:hover {
+        color: tc.$text-normal;
+      }
+    }
+  }
+
+  [class*="children_"] [class*="tabBar_"] [class*="addFriend_"][role="tab"] {
+    color: tc.$text-alt!important;
+    background-color: gc.$color11!important;
+    transition: filter 0.2s;
+
+    &:hover {
+      filter: brightness(0.8);
+    }
+  }
+
+  // top-bar in channels
+  &[class*="title_"][aria-label="Channel header"] {
+    position: relative;
+    border: none;
+    padding: 0;
+
+    [class*="children_"] {
+      background: tc.$background-secondary;
+      padding: 0 12px;
+      border-radius: ms.$big-radius 0 0 ms.$big-radius;
+    }
+
+    [class*="toolbar_"] {
+      background: transparent;
+      border-radius: 0 ms.$big-radius ms.$big-radius 0;
+
+      // separate / spacing elements in toolbar
+      [class*="iconWrapper_"][aria-label="Start Voice Call"] /*, [class*="icon_"] */ {
+        padding-left: 16px!important;
+        border-radius: ms.$big-radius 0 0 ms.$big-radius;
+      }
+
+      [class*="anchor_"] {
+        .iconWrapper_af9215 {
+          padding-right: 16px;
+          border-radius: 0 ms.$big-radius ms.$big-radius 0;
+        }
+      }
+
+      // toolbar standard items
+      [class*="iconWrapper_"] {
+        background: tc.$background-secondary;
+        margin: 0;
+        padding: 0 7.6px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+
+        svg {
+          width: 24px;
+        }
+
+        // notify icon badge
+        [class*="iconBadge_"] {
+          bottom: 12px;
+          right: 10px;
+          background: gc.$color3;
+          width: 6px;
+          height: 6px;
+        }
+      }
+
+
+      // search bar
+      [class*="searchBar_"] {
+        margin: 0 10px 0 0;
+        order: -1;
+        background: tc.$background-secondary;
+        border-radius: 0 ms.$big-radius ms.$big-radius 0;
+        transition: all 0.25s ease;
+        -webkit-transition: width 0.25s ease;
+      }
+    }
+  }
+}
+
+// coloring background for server home section top bar
+[class*="title_"][class*="container_"][class*="themed_"] {
+  background: tc.$background-secondary;
+}

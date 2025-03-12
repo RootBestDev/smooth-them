@@ -1,0 +1,109 @@
+@use '../abstracts/theme-colors' as tc;
+@use '../abstracts/measurements' as ms;
+@use '../abstracts/general-colors' as gc;
+
+[class*="chat_"] [class*="content_"]::before {
+  display: none;
+}
+
+[class*="content-"] [class*="container-"] {
+  background-color: tc.$background-spacing;
+}
+
+[class*="tabBody_"]:before  {
+  display: none;
+}
+
+[class*="tabBody_"] [class*="peopleColumn_"] {
+  background-color: tc.$background-spacing;
+}
+
+[class*="bg_"] {
+  background-color: tc.$background-spacing;
+}
+
+[class*="peopleListItem_"] {
+  border-top: tc.$dark-border;
+}
+
+// call
+[class*="videoControls-"] [class*="justifyCenter-"] [class*="wrapper-"] div, [class*="panels_"] [class*="container_"] {
+  button[aria-label="Disconnect"] {
+    background-color: gc.$color3;
+    color: tc.$text-alt;
+    div svg {
+      color: inherit;
+    }
+  }
+}
+
+[class*="panels_"] [class*="container_"] {
+  border-radius: ms.$big-radius ms.$big-radius 0 0;
+}
+
+// call container
+[class*="noChat"][class*="video"] {
+  background-color: transparent;
+}
+
+[class*="callContainer"] {
+  background-color: transparent;
+
+  [class*="container"][class*="transparent"] {
+    padding: 0;
+  }
+
+  // call show chat button
+  [class*="button"][aria-label="Show Chat"] {
+    margin: 10px 20px 0 0;
+  }
+
+  [class*="headerWrapper"] {
+    padding: 0;
+  }
+
+  [class*="videoControls"] {
+    padding: 0;
+
+    [class*="gradient"] {
+        display: none;
+    }
+
+    [class*="bottomControls"] {
+      padding: 10px 15px;
+      margin: 0 10px 10px 10px;
+      max-width: calc(100% - 50px);
+      background-color: tc.$background-secondary;
+      border-radius: ms.$big-radius;
+      border: 1px solid gc.$color10;
+    }
+  }
+}
+
+[class*="content_"] .container_d746e5 {
+  width: 100%;
+  padding: 10px;
+
+  [class*="scroller_"] {
+    border-radius: ms.$medium-radius;
+    overflow: hidden;
+  }
+
+  [class*="headerBar_"] [class*="backdrop_"] {
+    border-radius: ms.$medium-radius ms.$medium-radius 0 0;
+    overflow: hidden;
+  }
+}
+
+[class*="container_"] [class*="shop_"] {
+  background-color: unset;
+  padding: 10px;
+}
+
+[class*="container_"] [class*="shopScroll_"], [class*="container_"] [class*="shop_"] {
+  border-radius: ms.$big-radius;
+}
+
+[class*="container_"][data-cy*="marketing-page"] {
+  margin-left: 10px;
+}

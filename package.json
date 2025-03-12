@@ -1,0 +1,18 @@
+{
+  "name": "smooth-theme",
+  "version": "2.3.0",
+  "author": "datsfilipe <datsfilipe@gmail.com>",
+  "description": "Simplicity in two colors, the best theme for you.",
+  "maintainers": [
+    "Filipe Lima <datsfilipe@gmail.com>"
+  ],
+  "license": "",
+  "scripts": {
+    "dev": "./watch-sass.sh",
+    "build": "sass src/scss:src/output"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "sass": "^1.48.0"
+  }
+}

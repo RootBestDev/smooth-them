@@ -1,0 +1,235 @@
+@use '../abstracts/theme-colors' as tc;
+@use '../abstracts/general-colors' as gc;
+@use '../abstracts/measurements' as ms;
+@use '../animations/ripple-effect' as anim;
+
+@include anim.ripple-animation-for-channels;
+
+[class*="sidebar_"] {
+  margin: 10px 0px 10px 0;
+  background-color: transparent;
+
+  nav, section {
+    border-radius: ms.$big-radius;
+    background-color: tc.$background-secondary;
+    overflow: hidden;
+
+    [class*="scroller-"] {
+      border-radius: ms.$big-radius;
+    }
+  }
+
+  nav + section {
+    margin-top: 10px;
+  }
+
+  // user panel section
+  section[class*="panels_"] {
+    [class*="button_"]:hover, [class*="button_"]:hover path, [class*="avatarWrapper_"]:hover [class*="title_"] {
+      color: tc.$text-alt;
+    }
+
+    [class*="button_"]:hover[aria-label="User Settings"] path {
+      fill: tc.$text-alt;
+    }
+
+    [class*="subtext_"] {
+      color: tc.$text-muted;
+    }
+
+    [class*="avatarWrapper_"] {
+      border-radius: ms.$medium-radius;
+    }
+
+    [class*="container_"] {
+      background-color: transparent;
+    }
+  }
+
+  /**----------------
+   * channels bar
+  -----------------*/
+  // channels items select animation
+  [class*="containerDefault_"] [class*="wrapper_"] {
+    overflow: hidden;
+    border-radius: ms.$medium-radius;
+  }
+  
+  [class*="containerDefault_"] [class*="wrapper_"]::after {
+    border-radius: 50%;
+    background-color: rgba(55,55,55, 0.6);
+    content:'';
+    position: absolute;
+    top: 50%; left: 50%;
+    width:0; height:0;
+    transition: all 0.5s ease-out;
+    opacity:0;
+  }
+
+  [class*="containerDefault_"] [class*="wrapper_"][class*="modeSelected_"]::after {
+    width:230px;
+    height:230px;
+    animation: ripple-effect-for-channels 0.350s;
+    animation-iteration-count: 1;
+  }
+
+  // channels items select
+  [class*="wrapper_"][class*="modeSelected_"] a, [class*="wrapper_"]:active a {
+    [class*="name_"], [class*="actionIcon_"], [class*="actionIcon_"] path {
+      color: tc.$text-alt;
+      fill: tc.$text-alt;
+    }
+    [class*="statusDiv_"] * {
+      color: tc.$text-alt;
+    }
+    [class*="statusDiv_"]:hover * {
+      color: tc.$text-muted;
+    }
+    [class*="iconContainer_"] svg {
+      color: tc.$text-alt;
+    }
+  }
+
+  [class*="content-"] [class*="selected-"] {
+    background-color: tc.$interactive-normal;
+  }
+
+  [class*="content-"] [class*="containerDefault-"] [class*="wrapper-"]:active {
+    [class*="content-"] a *, [class*="content-"] [class*="children-"] * {
+      color: tc.$text-alt;
+    }
+  }
+
+  [class*="content-"] [class*="containerDefault-"] [class*="wrapper-"] [class*="content-"] {
+    border-radius: ms.$small-radius;
+
+    [class*="children-"] [class*="mentionsBadge-"] div {
+      color: tc.$text-alt;
+    }
+  }
+
+  // live badge
+  [class*="liveSmall-"][class*="textBadge-"] {
+    border-radius: ms.$really-small-radius;
+    color: tc.$text-alt;
+    background-color: gc.$color4!important;
+  }
+
+  /**----------------
+   * home section bar
+  -----------------*/
+  // home section items select
+  [class*="channel_"] {
+    margin-bottom: 4px;
+    
+    // ripple animation
+    [class*="interactive_"] {
+      position: relative;
+      overflow: hidden;
+    }
+
+    [class*="interactive_"]::before {
+      border-radius: 50%;
+      background-color: rgba(55,55,55, 0.6);
+      content:'';
+      position: absolute;
+      top: 50%; left: 50%;
+      width:0; height:0;
+      transition: all 0.5s ease-out;
+      opacity:0;
+    }
+
+    [class*="interactive_"][class*="interactiveSelected_"]::before {
+      width:230px;
+      height:230px;
+      animation: ripple-effect-for-channels 0.350s;
+      animation-iteration-count: 1;
+    }
+    // ------------
+
+    [class*="interactive_"]:active, [class*="interactive_"]:active [class*="closeButton_"], [class*="interactiveSelected_"], [class*="highlighted-"] {
+      color: tc.$text-alt;
+    }
+
+    [class*="interactive_"]:hover, [class*="interactive_"]:hover [class*="closeButton_"] {
+      color: tc.$text-normal;
+    }
+
+    [class*="interactive_"]:focus-within, [class*="interactive_"][class*="interactiveSelected_"] {
+      color: tc.$text-alt;
+      background-color: gc.$color7;
+      [class*="closeButton_"] {
+        color: tc.$text-alt;
+      }
+    }
+
+    [class*="interactive_"] {
+      border-radius: ms.$medium-radius;
+    }
+  }
+
+  /**----------------
+   * settings bar
+  -----------------*/  
+  // settings items select
+  [class*="item_"] {
+    border-radius: ms.$small-radius;
+    overflow: hidden;
+  }
+
+  [class*="item_"]::after {
+    border-radius: 50%;
+    background-color: rgba(55,55,55, 0.6);
+    content:'';
+    position: absolute;
+    top: 50%; left: 50%;
+    width:0; height:0;
+    transition: all 0.5s ease-out;
+    opacity:0;
+  }
+
+  [class*="selected_"][class*="item_"]::after {
+    width:230px;
+    height:230px;
+    animation: ripple-effect-for-channels 0.350s;
+    animation-iteration-count: 1;
+  }
+
+  [class*="item_"]:active, [class*="selected_"][class*="item_"]:active, [class*="selected_"][class*="item_"], [class*="premiumLabel_"][class*="selected_"] {
+    color: tc.$text-alt;
+  }
+
+  [class*="side_"] [class*="selected_"][class*="item_"]:hover {
+    background-color: var(--background-modifier-selected);
+  }
+
+  // settings sidebar items 
+  [class*="side_"] [class*="item_"][aria-controls="delete-tab"] {
+    color: gc.$color3!important;
+    transition: all 0.3s;
+  }
+
+  [class*="side_"] [class*="item_"][aria-controls="delete-tab"]:hover:not([class*="disabled-"]), [class*="side-"] [class*="item_"][aria-controls="delete-tab"]:active:not([class*="disabled-"]) {
+    background-color: gc.$color4;
+    color: tc.$text-alt!important;
+  }
+}
+
+// active threads item
+[class*="wrapper-"]:active:active [class*="content-"] * {
+  color: tc.$text-alt;
+}
+
+[class*="listDefault"] [class*="voiceUser"][class*="selected"] [class*="username"] {
+  color: tc.$text-alt;
+}
+
+[class*="panels_"][aria-label="User area"] [class*="connection_"] {
+  [class*=voiceButtonsContainer_][class*=noWrap] {
+    width: unset;
+    margin-left: 20px;
+  }
+  [class*="inner_"] {
+    min-width: unset;
+  }
+}

@@ -1,0 +1,120 @@
+@use '../abstracts/theme-colors' as tc;
+@use '../abstracts/general-colors' as gc;
+@use '../abstracts/brand-experiment-colors' as bec;
+@use '../abstracts/measurements' as ms;
+
+// important
+[class*="chat_"] {
+  background: tc.$background-spacing;
+}
+
+::-webkit-scrollbar {
+  transition: all 0.2s;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent!important;
+  &:hover {
+    background-color: tc.$scrollbar-auto-track!important;
+  }
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: tc.$interactive-hover;
+}
+
+// space below messages
+[class*="scrollerSpacer_"] {
+  height: 12px;
+}
+
+[class*="messagesWrapper_"] {
+  // adding the spaces
+  margin: 10px 10px 10px 10px;
+  border-radius: ms.$big-radius;
+  box-shadow: tc.$box-shadow;
+  background: tc.$background-primary;
+  overflow: hidden;
+
+  [class*="buttonContainer_"] [class*="wrapper_"] {
+    border-radius: ms.$medium-radius;
+
+    div[aria-expanded="true"] {
+      color: tc.$text-alt;
+    }
+  }
+
+  // general
+  ol {
+    li [class*="message-"] {
+      border-radius: 0 ms.$small-radius ms.$small-radius 0;
+
+      [class*="repliedMessage-"] {
+        &::before { border-color: tc.$background-modifier-accent }
+      }
+
+      [class*="embedWrapper-"], [class*="container-"] [class*="wrapper-"] {
+        border-radius: ms.$medium-radius;
+      }
+
+      [class*="reaction-"][class*="reactionMe-"] [class*="reactionCount-"] {
+        color: tc.$text-normal;
+      }
+    }
+
+    // new messages divider
+    div[class*="divider_"][id="---new-messages-bar"] {
+      border-color: gc.$color3;
+
+      [class*="content_"], [class*="unreadPillCapStroke_"] {
+        color: gc.$color3;
+      }
+
+      [class*="unreadPill_"] {
+        color: tc.$text-alt;
+        background-color: gc.$color3;
+
+        svg path {
+          fill: gc.$color3;
+        }
+      }
+    }
+  }
+
+  // message bars
+  [class*="newMessagesBar"] {
+    margin-top: 6px;
+    border-radius: ms.$medium-radius;
+    padding: 2px;
+    background-color: rgba(230, 230, 230,0.7);
+    &[class*="barBase-"] {
+      left: 10px;
+    }
+    button {
+      color: tc.$text-alt!important;
+    }
+  }
+
+  [class*="jumpToPresentBar"] {
+    margin-bottom: 6px;
+    padding: 2px;
+    bottom: 0;
+    border-radius: ms.$medium-radius;
+    background-color: rgba(230, 230, 230,0.7);
+    &[class*="barBase-"] {
+      left: 10px;
+    }
+    &:active {
+      margin-bottom: 6px;
+      padding: 2px;
+    }
+    button {
+      color: tc.$text-alt!important;
+    }
+  }
+}
+
+// divider
+[class*="divider_"] {
+  border-top: thin solid rgba(230, 230, 230, 0.06);
+}

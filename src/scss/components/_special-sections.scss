@@ -1,0 +1,67 @@
+@use '../abstracts/measurements' as ms;
+@use '../abstracts/theme-colors' as tc;
+
+// browse channels section
+[class*="container_"], [class*="chatContent_"] {
+  border-radius: ms.$medium-radius;
+}
+
+// discord warns
+[class*="notice_"] {
+  margin-top: 10px;
+  margin-right: 10px;
+  border-radius: 8px;
+  padding: 2px;
+  background-color: rgba(230, 230, 230, 0.7);
+  color: tc.$text-alt;
+
+  [class*="closeIcon"] path {
+    fill: tc.$text-alt;
+  }
+
+  [class*="button"] {
+    border-color: tc.$text-alt;
+    color: tc.$text-alt;
+  }
+}
+
+[class*="chat_"] {
+  [class*="chatContent_"] {
+    background: transparent;
+    [class*="banner"] [class*="nextIcon"] path {
+      fill: tc.$text-alt;
+    }
+  }
+
+  [class*="profilePanel"] {
+    margin: 10px 10px 10px 0;
+    border-radius: ms.$medium-radius;
+    overflow: hidden;
+  }
+}
+
+[class*="container_"] [class*="nowPlayingColumn_"] {
+  margin: 0 10px 10px 0;
+  background-color: unset;
+}
+
+[class*="container_"] [class*="nowPlayingColumn_"] [class*="scroller_"] {
+  border-left: unset;
+}
+
+// server home section
+[class*="container_"] {
+  background-color: unset;
+
+  [class*="peopleColumn_"] {
+    margin: 10px 10px 10px 10px;
+    border-radius: ms.$medium-radius;
+    background-color: tc.$background-primary;
+    box-shadow: tc.$box-shadow;
+  }
+}
+
+// image carousel
+.theme-dark [class*="focusLock"] [class*="carouselModal"], .theme-light [class*="focusLock"] [class*="carouselModal"] {
+  background-color: transparent;
+}

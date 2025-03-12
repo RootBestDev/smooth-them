@@ -1,0 +1,124 @@
+@use '../abstracts/measurements' as ms;
+@use '../abstracts/theme-colors' as tc;
+@use '../animations/ripple-effect' as anim;
+
+// adding spaces
+[class*="membersWrap_"], [class*="chat_"] [class*="outer_"] {
+  margin: 10px 10px 10px 0;
+  border-radius: ms.$big-radius;
+  height: auto;
+  overflow: hidden;
+}
+
+[class*="container_"] [class*="membersWrap_"], [class*="membersWrap_"] {
+  // to make border radius work, we have to apply here too
+  border-radius: ms.$big-radius;
+
+  [class*="members_"] {
+    border-radius: inherit;
+  }
+
+  // member item
+  [class*="layout_"] {
+    position: relative;
+    overflow: hidden;
+    border-radius: ms.$medium-radius;
+
+    [class*="botTagRegular_"] {
+      color: tc.$text-alt;
+    }
+  }
+
+  [class*="layout_"]::after {
+    border-radius: 50%;
+    background-color: rgba(55,55,55, 0.6);
+    content:'';
+    position: absolute;
+    top: 50%; left: 50%;
+    width:0; height:0;
+    transition: all 0.5s ease-out;
+    opacity:0;
+  }
+
+  [class*="member_"][class*="selected_"] {
+    [class*="layout_"]::after {
+      width:230px;
+      height:230px;
+      animation: ripple-effect-for-channels 0.350s;
+      animation-iteration-count: 1;
+    }
+
+    [class*="layout_"] [class*="content_"] * {
+      color: tc.$text-alt;
+    }
+  }
+
+  [class*="member_"]:active {
+    [class*="layout_"] [class*="content_"] * {
+      color: tc.$text-muted;
+    }
+  }
+}
+
+// now playing column
+[class*="nowPlayingColumn_"] {
+  background: tc.$background-secondary;
+  border-radius: ms.$big-radius;
+  margin: 0 10px 10px 10px;
+  max-width: unset;
+
+  [class*="container_"] {
+    background-color: transparent;
+    [class*="scroller_"] {
+      border: none;
+    }
+  }
+}
+
+[class*="container_"][aria-label="Friends"] {
+  width: 100%;
+}
+
+// resize handler
+[class*="resizeHandle-"] {
+  display: none;
+}
+
+// search results container
+[class*="searchResultsWrap-"] {
+  border-radius: ms.$big-radius;
+  margin: 0 10px 10px 0;
+
+  header [class*="searchHeaderTabList-"] [class*="item-"] {
+    border-radius: ms.$small-radius;
+  }
+
+  header [class*="searchHeaderTabList-"] [class*="item-"][class*="selected-"] {
+    color: tc.$text-alt;
+    &:hover {
+      color: tc.$text-normal;
+    }
+  }
+}
+
+// create thread
+[class*="container-"] {
+  background: transparent;
+  width: auto!important;
+  max-width: 450px;
+
+  [class*="container-"] {
+    height: 40px;
+  }
+
+  section[class*="container-"][aria-label="Create Thread"] {
+    [class*="container-"] {
+      margin: 10px 10px 10px 0;
+    }
+    [class*="chat-"] {
+      background-color: tc.$background-secondary;
+      margin: 0 10px 10px 0;
+      border-radius: ms.$big-radius;
+    }
+  }
+}

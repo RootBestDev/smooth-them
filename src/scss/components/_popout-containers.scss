@@ -1,0 +1,162 @@
+@use '../abstracts/theme-colors' as tc;
+@use '../abstracts/general-colors' as gc;
+@use '../abstracts/measurements' as ms;
+@use '../abstracts/brand-experiment-colors' as bec;
+
+// message options menu
+#popout_3642 {
+  [class*="menu-"] {
+    [class*="item-"] {
+      border-radius: ms.$really-small-radius;
+    }
+
+    [class*="colorDanger-"][class*="focused-"] {
+      background-color: gc.$color4;
+      color: tc.$text-alt;
+    }
+
+    [class*="colorDanger-"]:active:not([class*="hideInteraction-"]) {
+      background-color: gc.$color4;
+      color: tc.$text-alt;
+    }
+  }
+}
+
+// server options popout
+#popout_3529 {
+  [class*="item-"] {
+    border-radius: ms.$really-small-radius;
+
+    [class*="newBadge-"] {
+      color: tc.$text-alt;
+      background-color: gc.$color3!important;
+    }
+  }
+
+  [class*="item-"]:active:not([class*="hideInteraction-"]) {
+    background-color: tc.$background-modifier-accent;
+  }
+}
+
+// replace standard root background color
+.theme-dark [class*="root_"]:not([class*="custom-profile-theme"] [class*="root_"]) {
+  background-color: tc.$background-primary;
+
+  [class*="bodyWrapper_"] {
+    background-color: tc.$background-primary;
+  }
+}
+
+// user profile
+[role="dialog"][aria-label="User Profile Modal"] [class*="root-"] {
+  border-radius: ms.$big-radius;
+  [class*="connectedAccount-"] {
+    border-radius: ms.$medium-radius;
+    background-color: rgba(230, 230, 230, 0.06);
+  }
+}
+
+// modals
+[class*="modal-"] {
+  border-radius: ms.$medium-radius;
+}
+
+// moving search popout to where the search input currently are
+[class*="container-"][role="listbox"] {
+  transform: translateX(-85px);
+  border-radius: ms.$medium-radius;
+}
+
+// style of search results group popout
+[class*="resultsGroup-"] {
+  background-color: tc.$background-secondary-alt;
+  [class*="searchLearnMore-"] a[class*="anchor-"] {
+    color: gc.$color5!important;
+  }
+
+  [class*="option-"] {
+    border-radius: ms.$small-radius;
+    [class*="filter-"] {
+      color: tc.$text-normal;
+    }
+    [class*="answer-"] {
+      color: tc.$text-muted;
+    }
+    &:after {
+      background: linear-gradient(90deg,rgba(54,57,63,0),tc.$background-secondary 80%);
+    }
+  }
+}
+
+[class*="queryContainer-"] {
+  color: tc.$text-normal!important;
+  background-color: tc.$background-tertiary!important;
+  border-bottom: tc.$dark-border;
+}
+
+// message options
+[class*="menu-"] {
+  [class*="item-"] {
+    border-radius: ms.$small-radius;
+
+    &[class*="colorDanger-"]:hover, &[class*="colorDanger-"]:active {
+      background: gc.$color4;
+      color: tc.$text-alt;
+    }
+  }
+}
+
+// ctrl/command + k menu
+[class*="quickswitcher-"] {
+  [class*="result-"] {
+    border-radius: ms.$small-radius;
+  }
+  [class*="result-"][aria-selected="true"] {
+    [class*="name-"], [class*="misc-"], [class*="iconContainer-"] svg {
+      color: tc.$text-alt;
+    }
+  }
+}
+
+// popout footers
+:root [class*="footer-"] {
+  background-color: tc.$background-tertiary;
+  border-top: tc.$dark-border;
+}
+
+// forum tips popout
+#popout_80 {
+  [class*="gridUpsellContainer-"] {
+    background-color: tc.$background-tertiary;
+  }
+
+  // arrow
+  [class*="upsellTooltipWrapper-"][class*="caretTopCenter-"]::after {
+    border-bottom-color: tc.$background-tertiary;
+  }
+}
+
+// selecting avatar decoration popout
+[class*="focusLock-"] {
+  [class*="scrollBackgroundContainer-"] * {
+    background-color: tc.$background-secondary;
+  }
+
+  [class*="scrollContainer-"] [class*="scrollSection-"] {
+    background-color: tc.$background-secondary;
+  }
+}
+
+// emojis popout tooltip
+[class*="tooltipBrand-"] [class*="tooltipContent-"] {
+  color: tc.$text-alt;
+
+  [class*="defaultColor-"] {
+    color: tc.$text-alt;
+  }
+}
+
+.custom-profile-theme [class*="inner_"] {
+  --profile-gradient-start: unset;
+  --profile-gradient-end: unset;
+}

@@ -1,0 +1,59 @@
+@use '../abstracts/theme-colors' as tc;
+@use '../abstracts/measurements' as ms;
+
+// discover servers
+[class*="pageWrapper_"] {
+  background-color: tc.$background-spacing!important;
+}
+
+[class*="sidebar_"] {
+  [class*="categoryItem_"] {
+    position: relative;
+    overflow: hidden;
+    border-radius: ms.$big-radius;
+  }
+
+  [class*="categoryItem_"][class*="selected_"] {
+    color: tc.$text-alt;
+  }
+
+  [class*="categoryItem_"]::before {
+    border-radius: 50%;
+    background-color: rgba(55,55,55, 0.6);
+    content:'';
+    position: absolute;
+    top: 50%; left: 50%;
+    width:0; height:0;
+    transition: all 0.5s ease-out;
+    opacity:0;
+  }
+
+  [class*="categoryItem_"][class*="selected_"]::before {
+    width:230px;
+    height:230px;
+    animation: ripple-effect-for-channels 0.350s;
+    animation-iteration-count: 1;
+  }
+}
+
+// server cards
+[class*="card_"]:not([class*="activity_"]) {
+  padding-top: 40px;
+  justify-content: center;
+  height: auto;
+  min-height: 200px;
+  border-radius: ms.$medium-radius;
+  [class*="cardHeader_"] {
+    height: auto;
+  }
+  [class*="cardHeader_"] [class*="splash_"] {
+    display: none;
+  }
+}
+
+// nitro section
+[class*="applicationStore-"] {
+  margin: 10px 10px 10px 0;
+  border-radius: ms.$big-radius;
+  box-shadow: tc.$box-shadow;
+}

@@ -1,0 +1,45 @@
+@use '../abstracts/theme-colors' as tc;
+@use '../abstracts/general-colors' as gc;
+@use '../abstracts/measurements' as ms;
+
+[class*="guilds_"][class*="wrapper_"] {
+  margin: 10px;
+  background-color: transparent;
+  border-radius: ms.$big-radius;
+
+  ul[role="tree"] [class*="scroller_"] {
+    background-color: tc.$background-tertiary;
+    height: 100%;
+  }
+
+  [class*="lowerBadge-"] div {
+    color: tc.$text-alt;
+    background-color: gc.$color4!important;
+  }
+
+  // replace standard items color
+  [class*="wrapper_"][class*="selected_"] [class*="childWrapper_"], [class*="wrapper_"][class*="selected_"] [class*="wrapper_"]:hover [class*="childWrapper_"] {
+    color: tc.$text-alt;
+  }
+
+  [class*="wrapper_"][data-list-item-id="guildsnav___home"] {
+    &[class*="selected_"] [class*="childWrapper_"] {
+      color: tc.$text-alt;
+      background-color: tc.$interactive-hover;
+    }
+
+    [class*="childWrapper_"] {
+      color: tc.$text-normal;
+    }
+  }
+}
+
+// circle buttons
+[class*="circleIconButton_"] {
+  color: tc.$interactive-normal;
+
+  &[class*="selected_"] {
+    color: tc.$text-alt;
+    background-color: tc.$interactive-hover;
+  }
+}

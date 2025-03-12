@@ -1,0 +1,152 @@
+@use '../abstracts/theme-colors' as tc;
+@use '../abstracts/general-colors' as gc;
+@use '../abstracts/measurements' as ms;
+
+[class*="contentRegion-"] {
+  // close button
+  [class*="closeButton-"] {
+    border: none;
+    position: relative;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: unset;
+
+      top: -2px;
+    }
+  }
+  [class*="keybind-"] {
+    display: none;
+  }
+
+
+  [class*="inputDefault-"], [class*="select-"], [class*="item-"], [class*="searchContainer-"] [class*="container-"] {
+    border-radius: ms.$small-radius;
+  }
+
+  [class*="select-"][class*="open-"] {
+    border-radius: ms.$small-radius ms.$small-radius 0 0;
+  }
+
+  [class*="popout-"] {
+    border-radius: 0 0 ms.$small-radius ms.$small-radius;
+  }
+}
+
+// switch/control/slider buttons
+.bd-switch, [class*="control-"] {
+  .bd-switch-body, [class*="container-"] {
+    background-color: rgba(230, 230, 230, 0.2)!important;
+    svg, [class*="slider-"][style="left: -3px;"] {
+      rect {
+        fill: tc.$background-primary!important;
+      }
+      .bd-switch-symbol, svg {
+        path {
+          fill: gc.$color3;
+        }
+      }
+    }
+    [class*="slider-"] {
+      svg {
+        path {
+          fill: gc.$color11;
+        }
+      }
+    }
+  }
+  &.bd-switch-checked {
+    .bd-switch-symbol {
+      path {
+        fill: gc.$color11!important;
+      }
+    }
+  }
+}
+
+// checkbox
+[class*="checkboxWrapper-"] {
+  &[class*="checked-"] {
+    [class*="checkbox-"] {
+      background-color: gc.$color11!important;
+      border-color: gc.$color11!important;
+      svg {
+        path {
+          fill: tc.$text-alt;
+        }
+      }
+    }
+  }
+}
+
+// connections
+[class*="connection-"] {
+  [class*="connectionHeader-"] {
+    border-bottom: 1px solid rgba(230, 230, 230, 0.06);
+  }
+}
+
+// keybind shortcuts
+[class*="keybindShortcut-"] span {
+  background-color: tc.$interactive-normal!important;
+  border: tc.$dark-border!important;
+  color: tc.$text-alt!important;
+  border-radius: ms.$small-radius!important;
+  cursor: default;
+
+  svg * {
+    fill: tc.$text-alt;
+  }
+}
+
+// hypedsquad dialog box
+[class*="membershipDialog-"] {
+  border-radius: ms.$medium-radius;
+  [class*="membershipDialogContent-"] {
+    [class*="flex-"] {
+      [class*="flexChild-"] {
+        div {
+          color: tc.$text-alt;
+        }
+        h3 {
+          font-family: 'Poppins';
+          letter-spacing: 1px;
+          color: tc.$text-alt;
+        }
+      }
+    }
+    [class*="colorStandard-"] {
+      border-color: tc.$dark-border;
+      color: tc.$text-alt;
+      span {
+        color: tc.$text-alt;
+        &:hover {
+          filter: brightness(0.9);
+        }
+      }
+    }
+  }
+}
+
+// video bellow that
+[class*="videoWrapper-"] {
+  border-radius: ms.$big-radius;
+}
+
+// warning containers
+[class*="warning-"] {
+  color: tc.$text-alt;
+  border: none;
+  border-radius: ms.$medium-radius;
+
+  [class*="iconDiv-"] svg {
+    color: tc.$text-alt;
+  }
+}
+
+[class*="codeRedemptionRedirect-"] {
+  border-radius: ms.$small-radius;
+  background-color: rgba(230, 230, 230, 0.06)!important;
+  color: tc.$text-normal!important;
+  border: none;
+}
